@@ -1,0 +1,27 @@
+correct_model,incorrect_model,n_factors,n_items,misspecification
+F1=1-5\nF2=6-10\nCOV=F1*F2,F1=1-5\nF2=6-10,2,10,1 correlation misspecified
+F1=1-5\nF2=6-10\nCOV=F1*F2,F1=1-4\nF2=6-10\nCOV=F1*F2,2,10,10% items mis-loaded
+F1=1-5\nF2=6-10\nCOV=F1*F2,F1=1-4\nF2=6-9\nCOV=F1*F2,2,10,20% items mis-loaded
+F1=1-5\nF2=6-10\nCOV=F1*F2,F1=1-4\nF2=6-10,2,10,10% items mis-loaded + 1 correlation misspecified
+F1=1-5\nF2=6-10\nCOV=F1*F2,F1=1-4\nF2=6-9,2,10,20% items mis-loaded + 1 correlation misspecified
+F1=1-10\nF2=11-20\nCOV=F1*F2,F1=1-10\nF2=11-20,2,20,1 correlation misspecified
+F1=1-10\nF2=11-20\nCOV=F1*F2,F1=1-9\nF2=11-19\nCOV=F1*F2,2,20,10% items mis-loaded
+F1=1-10\nF2=11-20\nCOV=F1*F2,F1=1-8\nF2=11-18\nCOV=F1*F2,2,20,20% items mis-loaded
+F1=1-10\nF2=11-20\nCOV=F1*F2,F1=1-9\nF2=11-19,2,20,10% items mis-loaded + 1 correlation misspecified
+F1=1-10\nF2=11-20\nCOV=F1*F2,F1=1-8\nF2=11-18,2,20,20% items mis-loaded + 1 correlation misspecified
+F1=1-4\nF2=5-7\nF3=8-10\nCOV=F1*F2 F2*F3 F1*F3,F1=1-4\nF2=5-7\nF3=8-10\nCOV=F1*F2 F2*F3,3,10,1 correlation misspecified
+F1=1-4\nF2=5-7\nF3=8-10\nCOV=F1*F2 F2*F3 F1*F3,F1=1-4\nF2=5-7\nF3=8-10\nCOV=F1*F2,3,10,2 correlations misspecified
+F1=1-4\nF2=5-7\nF3=8-10\nCOV=F1*F2 F2*F3 F1*F3,F1=1-4\nF2=5-7\nF3=8-9\nCOV=F1*F2 F2*F3 F1*F3,3,10,10% items mis-loaded
+F1=1-4\nF2=5-7\nF3=8-10\nCOV=F1*F2 F2*F3 F1*F3,F1=1-4\nF2=5-6\nF3=8-9\nCOV=F1*F2 F2*F3 F1*F3,3,10,20% items mis-loaded
+F1=1-4\nF2=5-7\nF3=8-10\nCOV=F1*F2 F2*F3 F1*F3,F1=1-4\nF2=5-7\nF3=8-9\nCOV=F1*F2 F2*F3,3,10,1 correlation misspecified + 10% items mis-loaded
+F1=1-4\nF2=5-7\nF3=8-10\nCOV=F1*F2 F2*F3 F1*F3,F1=1-4\nF2=5-7\nF3=8-9\nCOV=F1*F2,3,10,2 correlation misspecified + 10% items mis-loaded
+F1=1-4\nF2=5-7\nF3=8-10\nCOV=F1*F2 F2*F3 F1*F3,F1=1-4\nF2=5-6\nF3=8-9\nCOV=F1*F2 F2*F3 ,3,10,1 correlation misspecified + 20% items mis-loaded
+F1=1-4\nF2=5-7\nF3=8-10\nCOV=F1*F2 F2*F3 F1*F3,F1=1-4\nF2=5-6\nF3=8-9\nCOV=F1*F2,3,10,2 correlation misspecified + 20% items mis-loaded
+F1=1-7\nF2=8-14\nF3=15-20\nCOV=F1*F2 F2*F3 F1*F3,F1=1-7\nF2=8-14\nF3=15-20\nCOV=F1*F2 F2*F3,3,20,1 correlation misspecified
+F1=1-7\nF2=8-14\nF3=15-20\nCOV=F1*F2 F2*F3 F1*F3,F1=1-7\nF2=8-14\nF3=15-20\nCOV=F1*F2,3,20,2 correlations misspecified
+F1=1-7\nF2=8-14\nF3=15-20\nCOV=F1*F2 F2*F3 F1*F3,F1=1-7\nF2=8-13\nF3=15-19\nCOV=F1*F2 F2*F3 F1*F3,3,20,10% items mis-loaded
+F1=1-7\nF2=8-14\nF3=15-20\nCOV=F1*F2 F2*F3 F1*F3,F1=1-7\nF2=8-12\nF3=15-18\nCOV=F1*F2 F2*F3 F1*F3,3,20,20% items mis-loaded
+F1=1-7\nF2=8-14\nF3=15-20\nCOV=F1*F2 F2*F3 F1*F3,F1=1-7\nF2=8-13\nF3=15-19\nCOV=F1*F2 F2*F3,3,20,1 correlation misspecified + 10% items mis-loaded
+F1=1-7\nF2=8-14\nF3=15-20\nCOV=F1*F2 F2*F3 F1*F3,F1=1-7\nF2=8-13\nF3=15-19\nCOV=F1*F2,3,20,2 correlation misspecified + 10% items mis-loaded
+F1=1-7\nF2=8-14\nF3=15-20\nCOV=F1*F2 F2*F3 F1*F3,F1=1-7\nF2=8-12\nF3=15-18\nCOV=F1*F2 F2*F3,3,20,1 correlation misspecified + 20% items mis-loaded
+F1=1-7\nF2=8-14\nF3=15-20\nCOV=F1*F2 F2*F3 F1*F3,F1=1-7\nF2=8-12\nF3=15-18\nCOV=F1*F2,3,20,2 correlation misspecified + 20% items mis-loaded
