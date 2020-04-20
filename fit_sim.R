@@ -5,6 +5,7 @@ fit_sim <- function(n_items,
                     incorrect_model,
                     n_factors,
                     misspecification,
+                    n_
                     ...){
   
   if(n_factors == 2){  
