@@ -1,4 +1,4 @@
-fit_sim <- function(n_items,
+fit_sim_n <- function(n_items,
                     response_options,
                     n_people,
                     correct_model,
