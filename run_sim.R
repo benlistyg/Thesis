@@ -1,15 +1,20 @@
 library(mirt)
 library(dplyr)
 library(drake)
-library(future)
+library(furrr)
+library(doParallel)
 
-clean(plan, destroy = T)
+# rm(list = ls())
+# clean(plan, destroy = T)
 
-source('https://raw.githubusercontent.com/benlistyg/fitsim/master/fit_sim.R')
-source('https://raw.githubusercontent.com/benlistyg/fitsim/master/rep_fit_sim.R')
+n_reps = 100
+source('https://raw.githubusercontent.com/benlistyg/fitsim/master/fit_sim_n.R')
 
+plan(multiprocess)
 cl <- makeCluster(8)
 registerDoParallel(cl)
+
+set.seed(0410)
 
 plan <- drake_plan(
   model_list = read.csv('https://raw.githubusercontent.com/benlistyg/fitsim/master/models.csv') %>% 
@@ -26,23 +31,30 @@ plan <- drake_plan(
     response_options = c(3,4,5)
   ) %>% 
     tidyr::crossing(model_list, .) %>% 
-    mutate(n_reps = 100) %>% 
-    filter(n_factors == 2) %>% 
-    arrange(n_items)
+  filter(n_factors == 2) %>% 
+    arrange(n_items) %>% 
+    slice(rep(row_number(), n_reps)) %>% 
+    mutate(n_ = 1:nrow(.))
 )
 
 make(plan)
 
 loadd()
 
+test_conditions <- simulation_conditions %>% 
+  filter(misspecification == '1 correlation misspecified',
+         response_options == 5,
+         n_items == 10) %>% 
+  arrange(n_people)
+
 begin_ <- Sys.time()
-refactored_and_parallel <- foreach(i=1:nrow(.fun = rep_fit_sim),
-                                   .combine=rbind, 
-                                   .packages=c('mirt','dplyr','plyr')) %dopar% {plyr::mdply(.data = (simulation_conditions[i,]), 
-                                                                                            .fun = rep_fit_sim, 
-                                                                                            .inform = T)}
-refactored_end <- Sys.time() - begin_
 
-stopCluster(cl)
+simulation_results = test_conditions[1:nrow(test_conditions),] %>%
+  split(.$n_) %>%
+  future_map(~ plyr::mdply(.data = ., 
+                           .fun = fit_sim_n, 
+                           .inform = T),
+             .progress =T) %>% 
+  future_map_dfr(~ as.data.frame(.))
 
-refactored_and_parallel
+end_ <- Sys.time() - begin_
