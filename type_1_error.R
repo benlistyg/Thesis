@@ -34,4 +34,5 @@ expand.grid(
   stringsAsFactors = F
 ) %>% 
   plyr::mdply(.data = ., 
-              .fun = test)
+              .fun = test) %>% 
+print()
