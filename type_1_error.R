@@ -1,61 +1,37 @@
-library(dplyr)
+#####
 
-simulation_results <- read.csv('simulation_results.csv')
-
-
-test <- function(mis, 
-                 M, 
-                 n_i, 
-                 r_o,
-                 n_p,
-                 fit_statistic,
-                 direction,
-                 cutoff){
-  stat <- simulation_results %>% 
-    filter(misspecification == mis,
-           Model == M,
-           n_items == n_i,
-           response_options == r_o,
-           n_people == n_p) %>% 
-    select(fit_statistic) %>% 
-    .[,1]
+test <- function(model = 'Correct',
+                 N_items,
+                 Response_options,
+                 Misspecification,
+                 N_people,
+                 ...){
   
-  paste('stat',direction,cutoff) %>% 
-    parse(text = .) %>% 
-    eval %>% 
-    table %>% 
-    return()
+  x <- (simulation_results %>% 
+          filter(Model == model,
+                 n_items == N_items,
+                 response_options == Response_options,
+                 misspecification == Misspecification,
+                 n_people == N_people) %>% 
+          .$CFI < 0.9)
   
+  cbind(
+    table(x)['TRUE'],
+    table(x)["FALSE"]
+  ) %>% 
+    data.frame() %>% 
+    setNames(c("TRUE.","FALSE.")) %>% 
+    `rownames<-`(NULL)
 }
 
+
 expand.grid(
-  unique(simulation_conditions$misspecification),
-  unique(simulation_conditions$n_items),
-  unique(simulation_conditions$response_options),
-  unique(simulation_conditions$n_people),
-  c("CFI","TLI","SRMSR","RMSEA"),
-  'Correct'
-)
-
-test_out <- simulation_results %>% 
-  filter(Model == 'Correct',
-         n_items == 10,
-         response_options == 5,
-         n_people == 150,
-         misspecification == '1 correlation misspecified'
-  )
-
-
-test_out %>% 
-  mutate(RMSEA_count = (RMSEA > 0.05),
-         SRMSR_count = (SRMSR > 0.08),
-         CFI_count   = (CFI   < 0.9),
-         TLI_count   = (TLI   < 0.9)) %>% 
-  select(RMSEA_count,
-         SRMSR_count,
-         CFI_count,
-         TLI_count) %>% 
-  apply(., 2, table) %>% 
-  data.frame %>% 
-  cbind(.[2,]) %>% 
-  .[-2,]
+  Model = c('Correct'),
+  N_items = unique(simulation_conditions$n_items), 
+  Response_options = unique(simulation_conditions$response_options), 
+  Misspecification = unique(simulation_conditions$misspecification),
+  N_people = unique(simulation_conditions$n_people),
+  stringsAsFactors = F
+) %>% 
+  plyr::mdply(.data = ., 
+              .fun = test)
