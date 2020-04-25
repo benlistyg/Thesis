@@ -4,8 +4,8 @@ library(drake)
 library(furrr)
 library(doParallel)
 
-# rm(list = ls())
-# clean(plan, destroy = T)
+rm(list = ls())
+clean(plan, destroy = T)
 
 n_reps = 100
 source('https://raw.githubusercontent.com/benlistyg/fitsim/master/fit_sim_n.R')
@@ -14,7 +14,7 @@ plan(multiprocess)
 cl <- makeCluster(8)
 registerDoParallel(cl)
 
-set.seed(0410)
+set.seed(04101994)
 
 plan <- drake_plan(
   model_list = read.csv('https://raw.githubusercontent.com/benlistyg/fitsim/master/models.csv') %>% 
@@ -31,7 +31,7 @@ plan <- drake_plan(
     response_options = c(3,4,5)
   ) %>% 
     tidyr::crossing(model_list, .) %>% 
-  filter(n_factors == 2) %>% 
+    filter(n_factors == 2) %>% 
     arrange(n_items) %>% 
     slice(rep(row_number(), n_reps)) %>% 
     mutate(n_ = 1:nrow(.))
@@ -49,7 +49,7 @@ test_conditions <- simulation_conditions %>%
 
 begin_ <- Sys.time()
 
-simulation_results = test_conditions[1:nrow(test_conditions),] %>%
+test_results = test_conditions[1:nrow(test_conditions),] %>%
   split(.$n_) %>%
   future_map(~ plyr::mdply(.data = ., 
                            .fun = fit_sim_n, 
