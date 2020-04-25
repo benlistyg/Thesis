@@ -1,3 +1,5 @@
+# test_results <- data.table::fread('https://github.com/benlistyg/fitsim/blob/master/test_results.csv?raw=true')
+
 t1_error <- function(model = 'Correct',
                      N_items,
                      Response_options,
@@ -5,7 +7,7 @@ t1_error <- function(model = 'Correct',
                      N_people,
                      ...){
   
-  CFI_results <- (simulation_results %>% 
+  CFI_results <- (test_results %>% 
                     filter(Model == model,
                            n_items == N_items,
                            response_options == Response_options,
@@ -13,7 +15,7 @@ t1_error <- function(model = 'Correct',
                            n_people == N_people) %>% 
                     .$CFI < 0.9)
   
-  TLI_results <- (simulation_results %>% 
+  TLI_results <- (test_results %>% 
                     filter(Model == model,
                            n_items == N_items,
                            response_options == Response_options,
@@ -21,7 +23,7 @@ t1_error <- function(model = 'Correct',
                            n_people == N_people) %>% 
                     .$TLI < 0.9)
   
-  RMSEA_results <- (simulation_results %>% 
+  RMSEA_results <- (test_results %>% 
                       filter(Model == model,
                              n_items == N_items,
                              response_options == Response_options,
@@ -29,13 +31,13 @@ t1_error <- function(model = 'Correct',
                              n_people == N_people) %>% 
                       .$RMSEA > 0.05)
   
-  SRMSR_results <- (simulation_results %>% 
+  SRMSR_results <- (test_results %>% 
                       filter(Model == model,
                              n_items == N_items,
                              response_options == Response_options,
                              misspecification == Misspecification,
                              n_people == N_people) %>% 
-                      .$SRMSR < 0.08)
+                      .$SRMSR > 0.08)
   
   cbind(
     table(CFI_results)['TRUE'],
@@ -56,17 +58,37 @@ t1_error <- function(model = 'Correct',
                "FALSE.RMSEA",
                "TRUE.SRMSR",
                "FALSE.SRMSR")) %>% 
-    `rownames<-`(NULL)
+    `rownames<-`(NULL) %>% 
+    return()
 }
 
 
 t1_error_results <- expand.grid(
   Model = c('Correct'),
-  N_items = unique(simulation_conditions$n_items), 
-  Response_options = unique(simulation_conditions$response_options), 
-  Misspecification = unique(simulation_conditions$misspecification),
-  N_people = unique(simulation_conditions$n_people),
+  N_items = unique(test_results$n_items), 
+  Response_options = unique(test_results$response_options), 
+  Misspecification = unique(test_results$misspecification),
+  N_people = unique(test_results$n_people),
   stringsAsFactors = F
 ) %>% 
   plyr::mdply(.data = ., 
               .fun = t1_error)
+
+test <- t1_error_results %>% 
+  filter(Response_options == 3,
+         N_items == 10) %>% 
+  arrange(Misspecification) %>% 
+  melt(., 
+       measure.vars = c("TRUE.CFI",
+                        "FALSE.CFI",
+                        "TRUE.TLI",
+                        "FALSE.TLI",
+                        "TRUE.RMSEA",
+                        "FALSE.RMSEA",
+                        "TRUE.SRMSR",
+                        "FALSE.SRMSR")) %>% 
+  filter(., grepl("TRUE",variable))
+
+ggplot(data = test,
+       aes(x = as.factor(N_people), y = value, fill=variable)) +
+  geom_bar(stat="identity", position=position_dodge())
