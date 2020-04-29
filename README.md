@@ -3,6 +3,8 @@ Multidimensional IRT Fit Index SImulation
 
 Simulation code for a study examining the Type 1 error / Power of M2-based global model fit statisics (`RMSEA`, `SRMSR`, `CFI`, and `TLI`) for multidimensional IRT models.
 
+For the current results, we are using the 0.08 SRMSR cut-off, 0.05 RMSEA cut-off, and 0.9 for both TLI and CFI.
+
 ## Simulation Conditions
 
 - Sample Size
