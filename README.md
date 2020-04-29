@@ -7,9 +7,9 @@ Simulation code for a study examining the Type 1 error / Power of M2-based globa
 
 - Sample Size
   - 150,250,400,600,800,1000
-- # of response options 
+- \# of response options 
   - 3,4,5
-- # of items
+- \# of items
   - 10,20
   - Note that this may need to be increased to show how RMSEA behaves as the M2 degrees of freedom increase (see David Kenny's 2014 paper in Sociological Research Methods)
 - Level of misspecification (this is for the Power study)
