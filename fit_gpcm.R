@@ -25,9 +25,9 @@ fit_gpcm <- function(n_items,
                     2)
   }
   
-  diffs <- t(apply(matrix(runif(n_items*(response.categories-1), .3, 1), n_items), 1, cumsum))
+  diffs <- t(apply(matrix(runif(n_items*(response_options-1), .3, 1), n_items), 1, cumsum))
   diffs <- -(diffs - rowMeans(diffs))
-  d <- matrix(diffs + rnorm(n_items), ncol = (response.categories-1))
+  d <- matrix(diffs + rnorm(n_items), ncol = (response_options-1))
   d <- cbind(matrix(rep(0, n_items)),d)
   
   dat <- simdata(a = a,
