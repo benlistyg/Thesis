@@ -8,7 +8,7 @@ rm(list = ls())
 clean(plan, destroy = T)
 
 n_reps = 100
-source('https://raw.githubusercontent.com/benlistyg/fitsim/master/fit_sim_n.R')
+source('https://raw.githubusercontent.com/benlistyg/fitsim/master/fit_graded.R')
 
 plan(multiprocess)
 cl <- makeCluster(8)
