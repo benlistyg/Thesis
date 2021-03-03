@@ -20,4 +20,4 @@ For the current results, we are using the 0.08 SRMSR cut-off, 0.05 RMSEA cut-off
   - 10% of items misloaded & 1 correlation misspecified
   - 20% of items misloaded & 1 correlation misspecified
 
-`fitsim.R` will run the complete simulation. On a 12-core machine, this took ~6.5 hours from start to finish when ran in parallel.
+`fitsim.R` will run the complete simulation. This will take a _very_ long time and I would recommend the use of a cluster to replicate results.
