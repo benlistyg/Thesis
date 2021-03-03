@@ -13,7 +13,6 @@ For the current results, we are using the 0.08 SRMSR cut-off, 0.05 RMSEA cut-off
   - 2,3
 - \# of items
   - 18,36
-  - Note that this may need to be increased to show how RMSEA behaves as the M2 degrees of freedom increase (see David Kenny's 2014 paper in Sociological Research Methods)
 - Level of misspecification (this is for the Power study)
   - 10% of items misloaded
   - 20% of items misloaded
