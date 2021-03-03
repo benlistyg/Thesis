@@ -8,11 +8,11 @@ For the current results, we are using the 0.08 SRMSR cut-off, 0.05 RMSEA cut-off
 ## Simulation Conditions
 
 - Sample Size
-  - 150,250,400,600,800,1000
+  - 250,500,750,1000
 - \# of response options 
-  - 3,4,5
+  - 2,3
 - \# of items
-  - 10,20
+  - 18,36
   - Note that this may need to be increased to show how RMSEA behaves as the M2 degrees of freedom increase (see David Kenny's 2014 paper in Sociological Research Methods)
 - Level of misspecification (this is for the Power study)
   - 10% of items misloaded
@@ -21,8 +21,4 @@ For the current results, we are using the 0.08 SRMSR cut-off, 0.05 RMSEA cut-off
   - 10% of items misloaded & 1 correlation misspecified
   - 20% of items misloaded & 1 correlation misspecified
 
-`run_sim.R` will run the complete simulation. On a 12-core machine, this took ~6.5 hours from start to finish when ran in parallel.
-
-To-do:
-- Write/run code for 3 dimensional model
-- Unit tests
+`fitsim.R` will run the complete simulation. On a 12-core machine, this took ~6.5 hours from start to finish when ran in parallel.
