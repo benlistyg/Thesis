@@ -495,7 +495,7 @@ fitsim <- function(correct_model,
 
 # Generating drake plan
 plan <- drake_plan(
-  model_list = read.csv('https://raw.githubusercontent.com/benlistyg/fitsim/master/models20200707.csv') %>%
+  model_list = read.csv('https://raw.githubusercontent.com/benlistyg/fitsim/master/model_syntax.csv') %>%
     mutate(correct_model = gsub(pattern = '\\n',
                                 replacement = '\n',
                                 correct_model,
