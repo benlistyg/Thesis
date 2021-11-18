@@ -68,7 +68,7 @@ generate_gpcm_item_params = function(n_dim, n_item, n_response_options){
   )
 }
 
-fit_gpcm_model = function(n_dim, n_item, n_response_options, n_people, model_sting){
+fit_gpcm_model = function(n_dim, n_item, n_response_options, n_people, model_string){
   
   gpcm_item_params = generate_gpcm_item_params(n_dim = n_dim, 
                                                n_item = n_item, 
@@ -81,7 +81,7 @@ fit_gpcm_model = function(n_dim, n_item, n_response_options, n_people, model_sti
                           itemtype = 'gpcm')
   
   mod = mirt(data = response_data,
-             model = model_sting,
+             model = model_string,
              itemtype = 'gpcm',
              technical=list(theta_lim=c(-3,3), NCYCLES = 10000),
              optimizer="nlminb",
@@ -94,7 +94,7 @@ fit_gpcm_model = function(n_dim, n_item, n_response_options, n_people, model_sti
     list(
       mod = mod,
       gpcm_item_params = gpcm_item_params,
-      M2 = data.frame(M2(mod, QMC = T, quadpts = 30, theta_lim = c(-3,3)))
+      M2 = data.frame(M2(mod, QMC = T, quadpts = 30, theta_lim = c(-3,3)), n_people, n_dim, n_item, n_response_options, model_string)
     )
   )
   
