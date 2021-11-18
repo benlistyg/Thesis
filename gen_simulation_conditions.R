@@ -30,12 +30,3 @@ simulation_conditions = bind_rows(
     arrange(n_item, n_dim)
   
 )
-
-simulation_conditions$n_people[1:10]
-test = t(mapply(FUN = final_model_fitting, 
-                n_dim = simulation_conditions$n_factors[1:10], 
-                n_item = simulation_conditions$n_items[1:10], 
-                n_response_options = simulation_conditions$n_response_options[1:10], 
-                n_people = 1000, 
-                model_string = simulation_conditions$model[1:10],
-                item_type = 'gpcm'))
