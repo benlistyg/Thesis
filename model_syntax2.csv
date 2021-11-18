@@ -1,0 +1,121 @@
+"","model","n_factors","n_items","misspecification"
+"1","F1=1-9
+F2=10-18
+COV=F1*F2",2,18,NA
+"2","F1=1-9
+F2=10-18
+COV=F1*F2",2,18,NA
+"3","F1=1-9
+F2=10-18
+COV=F1*F2",2,18,NA
+"4","F1=1-9
+F2=10-18
+COV=F1*F2",2,18,NA
+"5","F1=1-9
+F2=10-18
+COV=F1*F2",2,18,NA
+"6","F1=1-18
+F2=19-36
+COV=F1*F2",2,36,NA
+"7","F1=1-18
+F2=19-36
+COV=F1*F2",2,36,NA
+"8","F1=1-18
+F2=19-36
+COV=F1*F2",2,36,NA
+"9","F1=1-18
+F2=19-36
+COV=F1*F2",2,36,NA
+"10","F1=1-18
+F2=19-36
+COV=F1*F2",2,36,NA
+"11","F1=1-6
+F2=7-12
+F3=13-18
+COV=F1*F2,F2*F3,F1*F3",3,18,NA
+"12","F1=1-6
+F2=7-12
+F3=13-18
+COV=F1*F2,F2*F3,F1*F3",3,18,NA
+"13","F1=1-6
+F2=7-12
+F3=13-18
+COV=F1*F2,F2*F3,F1*F3",3,18,NA
+"14","F1=1-6
+F2=7-12
+F3=13-18
+COV=F1*F2,F2*F3,F1*F3",3,18,NA
+"15","F1=1-6
+F2=7-12
+F3=13-18
+COV=F1*F2,F2*F3,F1*F3",3,18,NA
+"16","F1=1-6
+F2=7-12
+F3=13-18
+COV=F1*F2,F2*F3,F1*F3",3,18,NA
+"17","F1=1-6
+F2=7-12
+F3=13-18
+COV=F1*F2,F2*F3,F1*F3",3,18,NA
+"18","F1=1-6
+F2=7-12
+F3=13-18
+COV=F1*F2,F2*F3,F1*F3",3,18,NA
+"19","F1=1-12
+F2=13-24
+F3=25-36
+COV=F1*F2,F2*F3,F1*F3",3,36,NA
+"20","F1=1-12
+F2=13-24
+F3=25-36
+COV=F1*F2,F2*F3,F1*F3",3,36,NA
+"21","F1=1-12
+F2=13-24
+F3=25-36
+COV=F1*F2,F2*F3,F1*F3",3,36,NA
+"22","F1=1-12
+F2=13-24
+F3=25-36
+COV=F1*F2,F2*F3,F1*F3",3,36,NA
+"23","F1=1-12
+F2=13-24
+F3=25-36
+COV=F1*F2,F2*F3,F1*F3",3,36,NA
+"24","F1=1-12
+F2=13-24
+F3=25-36
+COV=F1*F2,F2*F3,F1*F3",3,36,NA
+"25","F1=1-12
+F2=13-24
+F3=25-36
+COV=F1*F2,F2*F3,F1*F3",3,36,NA
+"26","F1=1-12
+F2=13-24
+F3=25-36
+COV=F1*F2,F2*F3,F1*F3",3,36,NA
+"27","F1=1-9\nF2=10-18",2,18,"1 correlation misspecified"
+"28","F1=1-9\nF2=10-17\nCOV=F1*F2",2,18,"10% items mis-loaded"
+"29","F1=1-8\nF2=10-16\nCOV=F1*F2",2,18,"20% items mis-loaded"
+"30","F1=1-9\nF2=10-17",2,18,"10% items mis-loaded + 1 correlation misspecified"
+"31","F1=1-8\nF2=10-16",2,18,"20% items mis-loaded + 1 correlation misspecified"
+"32","F1=1-18\nF2=19-36",2,36,"1 correlation misspecified"
+"33","F1=1-18\nF2=19-33\nCOV=F1*F2",2,36,"10% items mis-loaded"
+"34","F1=1-14\nF2=19-33\nCOV=F1*F2",2,36,"20% items mis-loaded"
+"35","F1=1-18\nF2=19-33",2,36,"10% items mis-loaded + 1 correlation misspecified"
+"36","F1=1-14\nF2=19-33",2,36,"20% items mis-loaded + 1 correlation misspecified"
+"37","F1=1-6\nF2=7-12\nF3=13-18\nCOV=F1*F2,F2*F3",3,18,"1 correlation misspecified"
+"38","F1=1-6\nF2=7-12\nF3=13-18\nCOV=F1*F2",3,18,"2 correlations misspecified"
+"39","F1=1-6\nF2=7-12\nF3=13-17\nCOV=F1*F2,F2*F3,F1*F3",3,18,"10% items mis-loaded"
+"40","F1=1-6\nF2=7-11\nF3=13-16\nCOV=F1*F2,F2*F3,F1*F3",3,18,"20% items mis-loaded"
+"41","F1=1-6\nF2=7-12\nF3=13-17\nCOV=F1*F2,F2*F3",3,18,"1 correlation misspecified + 10% items mis-loaded"
+"42","F1=1-6\nF2=7-12\nF3=13-17\nCOV=F1*F2",3,18,"2 correlation misspecified + 10% items mis-loaded"
+"43","F1=1-6\nF2=7-11\nF3=13-16\nCOV=F1*F2,F2*F3",3,18,"1 correlation misspecified + 20% items mis-loaded"
+"44","F1=1-6\nF2=7-11\nF3=13-16\nCOV=F1*F2",3,18,"2 correlation misspecified + 20% items mis-loaded"
+"45","F1=1-12\nF2=13-24\nF3=25-36\nCOV=F1*F2,F2*F3",3,36,"1 correlation misspecified"
+"46","F1=1-12\nF2=13-24\nF3=25-36\nCOV=F1*F2",3,36,"2 correlations misspecified"
+"47","F1=1-12\nF2=13-24\nF3=25-33\nCOV=F1*F2,F2*F3,F1*F3",3,36,"10% items mis-loaded"
+"48","F1=1-12\nF2=13-20\nF3=25-33\nCOV=F1*F2,F2*F3,F1*F3",3,36,"20% items mis-loaded"
+"49","F1=1-12\nF2=13-24\nF3=25-33\nCOV=F1*F2 F2*F3",3,36,"1 correlation misspecified + 10% items mis-loaded"
+"50","F1=1-12\nF2=13-24\nF3=25-33\nCOV=F1*F2",3,36,"2 correlation misspecified + 10% items mis-loaded"
+"51","F1=1-12\nF2=13-20\nF3=25-33\nCOV=F1*F2,F2*F3",3,36,"1 correlation misspecified + 20% items mis-loaded"
+"52","F1=1-12\nF2=13-20\nF3=25-33\nCOV=F1*F2",3,36,"2 correlation misspecified + 20% items mis-loaded"
