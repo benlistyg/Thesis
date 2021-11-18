@@ -1,4 +1,4 @@
-# fitsim
+# Thesis
 Multidimensional IRT Fit Index SImulation
 
 Simulation code for a study examining the Type 1 error / Power of M2-based global model fit statisics (`RMSEA`, `SRMSR`, `CFI`, and `TLI`) for multidimensional IRT models.
