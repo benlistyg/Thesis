@@ -1,8 +1,9 @@
 # MGGUM
-# https://journals.sagepub.com/doi/pdf/10.1177/0146621615602855?casa_token=UCIOfQgqJzEAAAAA:ZZeRyp5ynezP_oKgI05PNxefVfCbhAtNVRY224GgaXz5Zv6PgrA90he0Zf6MV2dxSJe4PcwGLK_Q
 # Wang and Wu (2016)
 # Roberts, Donoghue, and Laughlin (2002)
-# Zhang or Nye et al. (2020)
+# Nye et al. (2020)
+
+# Item parameters were drawn from the literature, quotes from the Wang and Wu paper are inserted in their respective item parameter sections.
 
 generate_ggum_item_params = function(n_dim, n_item, n_response_options){
   
@@ -33,10 +34,6 @@ generate_ggum_item_params = function(n_dim, n_item, n_response_options){
   # The threshold parameters (τik) were generated independently for each item. For a given item, the true τiC parameter was generated from a uniform (−1.4, −.4) distribution. Successive true τik parameters were then generated with the following recursive equation:
   # τik−1 = τik − .25 + eik−1, for k = 2, 3, ... ,C,
   # where eik−1 denotes a random error term generated from a N(0, .04) distribution. The τik parameters derived with this formula were not consistently ordered across the continuum within an item.
-  
-  t_vector = list()
-  
-  t_vector[[1]] = runif(n = 1, min = -1.4, max = -.4)
   
   if(n_response_options == 2){
     t_matrix = matrix(data = runif(n = n_item, min = -1.4, max = -.4), ncol = 1)
@@ -78,7 +75,7 @@ generate_ggum_item_params = function(n_dim, n_item, n_response_options){
       
     }
     
-    # Examining the t_e_matrix to ensure the recursive approach is being done correctly.
+    # Examine the t_e_matrix to ensure the recursive approach is being done correctly, its not presented by default.
     
     t_e_matrix = generate_t_matrix(n_item = n_item, n_response_options = n_response_options)
     
@@ -101,7 +98,7 @@ generate_ggum_item_params = function(n_dim, n_item, n_response_options){
   )
 }
 
-fit_ggum_model = function(n_dim, n_item, n_response_options, n_people, model_sting){
+fit_ggum_model = function(n_dim, n_item, n_response_options, n_people, model_string){
   
   ggum_item_params = generate_ggum_item_params(n_dim = n_dim, 
                                                n_item = n_item, 
@@ -116,7 +113,7 @@ fit_ggum_model = function(n_dim, n_item, n_response_options, n_people, model_sti
                           itemtype = 'ggum')
   
   mymodifiedpars = mirt(data = response_data,
-                        model = model_sting,
+                        model = model_string,
                         itemtype = 'ggum',
                         technical=list(theta_lim=c(-3,3), NCYCLES = 10000),
                         quadpts=30,
@@ -133,7 +130,7 @@ fit_ggum_model = function(n_dim, n_item, n_response_options, n_people, model_sti
   mymodifiedpars = mymodifiedpars
   
   mod = mirt(data = response_data,
-             model = model_sting,
+             model = model_string,
              itemtype = 'ggum',
              technical=list(theta_lim=c(-3,3), NCYCLES = 10000),
              quadpts=30,
@@ -147,7 +144,7 @@ fit_ggum_model = function(n_dim, n_item, n_response_options, n_people, model_sti
     list(
       mod = mod,
       ggum_item_params = ggum_item_params,
-      M2 = data.frame(M2(mod, QMC = T, quadpts = 30, theta_lim = c(-3,3)))
+      M2 = data.frame(M2(mod, QMC = T, quadpts = 30, theta_lim = c(-3,3)), n_people, n_dim, n_item, n_response_options, model_string)
     )
   )
   
